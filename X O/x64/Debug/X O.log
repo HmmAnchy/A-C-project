@@ -1,0 +1,5 @@
+﻿  X O.cpp
+C:\Users\isp920\Desktop\C++\C-project\X O\X O.cpp(8,9): warning C4101: l: неиспользованная локальная переменная
+C:\Users\isp920\Desktop\C++\C-project\X O\X O.cpp(26,9): warning C4101: b: неиспользованная локальная переменная
+C:\Users\isp920\Desktop\C++\C-project\X O\X O.cpp(25,9): warning C4101: c: неиспользованная локальная переменная
+C:\Users\isp920\Desktop\C++\C-project\X O\X O.cpp(29): error C4700: использована неинициализированная локальная переменная "i"
