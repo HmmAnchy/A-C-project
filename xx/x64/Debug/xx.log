@@ -1,5 +1,0 @@
-﻿  xx.cpp
-C:\Users\isp920\Desktop\C++\C-project\xx\xx.cpp(18,14): warning C4806: ==: небезопасная операция: значение типа "bool", приведенное к типу "char", не может равняться данной константе
-C:\Users\isp920\Desktop\C++\C-project\xx\xx.cpp(28,9): warning C4101: b: неиспользованная локальная переменная
-C:\Users\isp920\Desktop\C++\C-project\xx\xx.cpp(27,9): warning C4101: c: неиспользованная локальная переменная
-  xx.vcxproj -> C:\Users\isp920\Desktop\C++\C-project\xx\x64\Debug\xx.exe
