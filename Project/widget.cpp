@@ -7,6 +7,7 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     ui->tabWidget->tabBar()->hide();
+
 }
 
 Widget::~Widget()

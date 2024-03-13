@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/00.png</file>
+        <file>res/xx.png</file>
+        <file>res/icons8-крестики-нолики-96.png</file>
+        <file>res/Нолики.png</file>
+    </qresource>
+</RCC>
