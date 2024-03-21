@@ -10,6 +10,7 @@
 #define UI_WIDGET_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -26,7 +27,7 @@ class Ui_Widget
 {
 public:
     QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_5;
     QVBoxLayout *verticalLayout_5;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_2;
@@ -34,15 +35,13 @@ public:
     QPushButton *pushButton_23;
     QPushButton *pushButton_24;
     QSpacerItem *verticalSpacer_9;
+    QLabel *label_3;
     QSpacerItem *verticalSpacer_10;
     QPushButton *pushButton_25;
     QSpacerItem *verticalSpacer_11;
-    QSpacerItem *verticalSpacer_12;
-    QSpacerItem *verticalSpacer_13;
-    QSpacerItem *verticalSpacer_14;
     QPushButton *pushButton_26;
+    QSpacerItem *verticalSpacer_14;
     QSpacerItem *horizontalSpacer_4;
-    QSpacerItem *horizontalSpacer_2;
     QTabWidget *tabWidget;
     QWidget *tab_5;
     QGridLayout *gridLayout_5;
@@ -58,7 +57,7 @@ public:
     QWidget *tab_6;
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QSpacerItem *horizontalSpacer_3;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QWidget *Widget)
     {
@@ -67,11 +66,14 @@ public:
         Widget->resize(710, 456);
         Widget->setMinimumSize(QSize(710, 456));
         Widget->setMaximumSize(QSize(800, 586));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/res/images/icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Widget->setWindowIcon(icon);
         horizontalLayout = new QHBoxLayout(Widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalSpacer = new QSpacerItem(86, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout->addItem(horizontalSpacer);
+        horizontalLayout->addItem(horizontalSpacer_5);
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
@@ -81,7 +83,7 @@ public:
 
         label_2 = new QLabel(Widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setPixmap(QPixmap(QString::fromUtf8(":/res/\320\235\320\276\320\273\320\270\320\272\320\270.png")));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/res/images/text.png")));
         label_2->setAlignment(Qt::AlignCenter);
 
         verticalLayout_5->addWidget(label_2);
@@ -102,11 +104,17 @@ public:
 
         verticalLayout_5->addLayout(horizontalLayout_3);
 
-        verticalSpacer_9 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_9 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_5->addItem(verticalSpacer_9);
 
-        verticalSpacer_10 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        label_3 = new QLabel(Widget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_5->addWidget(label_3);
+
+        verticalSpacer_10 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_5->addItem(verticalSpacer_10);
 
@@ -119,33 +127,21 @@ public:
 
         verticalLayout_5->addItem(verticalSpacer_11);
 
-        verticalSpacer_12 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_5->addItem(verticalSpacer_12);
-
-        verticalSpacer_13 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_5->addItem(verticalSpacer_13);
-
-        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_5->addItem(verticalSpacer_14);
-
         pushButton_26 = new QPushButton(Widget);
         pushButton_26->setObjectName(QString::fromUtf8("pushButton_26"));
 
         verticalLayout_5->addWidget(pushButton_26);
 
+        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_5->addItem(verticalSpacer_14);
+
 
         horizontalLayout->addLayout(verticalLayout_5);
 
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_4);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_2);
 
         tabWidget = new QTabWidget(Widget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
@@ -259,9 +255,9 @@ public:
 
         horizontalLayout->addWidget(tabWidget);
 
-        horizontalSpacer_3 = new QSpacerItem(85, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        horizontalLayout->addItem(horizontalSpacer_3);
+        horizontalLayout->addItem(horizontalSpacer_2);
 
 
         retranslateUi(Widget);
@@ -274,10 +270,11 @@ public:
 
     void retranslateUi(QWidget *Widget)
     {
-        Widget->setWindowTitle(QCoreApplication::translate("Widget", "x o", nullptr));
+        Widget->setWindowTitle(QCoreApplication::translate("Widget", "\320\232\321\200\320\265\321\201\321\202\320\270\320\272\320\270-\320\275\320\276\320\273\320\270\320\272\320\270", nullptr));
         label_2->setText(QString());
         pushButton_23->setText(QCoreApplication::translate("Widget", "X", nullptr));
         pushButton_24->setText(QCoreApplication::translate("Widget", "O", nullptr));
+        label_3->setText(QCoreApplication::translate("Widget", "\320\237\320\276\320\261\320\265\320\264\320\260", nullptr));
         pushButton_25->setText(QCoreApplication::translate("Widget", "\320\230\320\263\321\200\320\260\321\202\321\214", nullptr));
         pushButton_26->setText(QCoreApplication::translate("Widget", "\320\237\321\200\320\260\320\262\320\270\320\273\320\260 \320\270\320\263\321\200\321\213", nullptr));
         pushButton_17->setText(QCoreApplication::translate("Widget", "PushButton", nullptr));
