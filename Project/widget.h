@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QPainter>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -14,8 +15,10 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
-
+protected:
+    void paintEvent(QPaintEvent *event);
 private:
     Ui::Widget *ui;
+    void setInterfaceStyle();
 };
 #endif // WIDGET_H

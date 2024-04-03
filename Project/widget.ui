@@ -29,6 +29,9 @@
    <iconset resource="res.qrc">
     <normaloff>:/res/images/icon.png</normaloff>:/res/images/icon.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <spacer name="horizontalSpacer_5">
@@ -79,14 +82,22 @@
        <item>
         <widget class="QPushButton" name="pushButton_23">
          <property name="text">
-          <string>X</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/images/c_s.png</normaloff>:/res/images/c_s.png</iconset>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_24">
          <property name="text">
-          <string>O</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/images/z_s.png</normaloff>:/res/images/z_s.png</iconset>
          </property>
         </widget>
        </item>
@@ -129,13 +140,28 @@
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>40</height>
+         <height>20</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_25">
+      <widget class="QPushButton" name="startButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>Играть</string>
        </property>
@@ -146,6 +172,9 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
@@ -155,7 +184,22 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_26">
+      <widget class="QPushButton" name="aboutButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>Правила игры</string>
        </property>
@@ -169,7 +213,7 @@
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>40</height>
+         <height>20</height>
         </size>
        </property>
       </spacer>
@@ -213,15 +257,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton {
-	color: #f00;
-	background-color: rgb(151, 155, 235);
-	border: 1px solid #555;
-}
-QPushButton::hover {
-
-	border-color: rgb(255, 0, 0);
-}</string>
+      <string notr="true"/>
      </property>
      <property name="currentIndex">
       <number>0</number>
@@ -451,7 +487,7 @@ QPushButton::hover {
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
+       <width>55</width>
        <height>20</height>
       </size>
      </property>

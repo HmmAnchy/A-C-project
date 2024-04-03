@@ -37,9 +37,9 @@ public:
     QSpacerItem *verticalSpacer_9;
     QLabel *label_3;
     QSpacerItem *verticalSpacer_10;
-    QPushButton *pushButton_25;
+    QPushButton *startButton;
     QSpacerItem *verticalSpacer_11;
-    QPushButton *pushButton_26;
+    QPushButton *aboutButton;
     QSpacerItem *verticalSpacer_14;
     QSpacerItem *horizontalSpacer_4;
     QTabWidget *tabWidget;
@@ -69,6 +69,7 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/res/images/icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         Widget->setWindowIcon(icon);
+        Widget->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout = new QHBoxLayout(Widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalSpacer_5 = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -93,11 +94,17 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         pushButton_23 = new QPushButton(Widget);
         pushButton_23->setObjectName(QString::fromUtf8("pushButton_23"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/res/images/c_s.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_23->setIcon(icon1);
 
         horizontalLayout_3->addWidget(pushButton_23);
 
         pushButton_24 = new QPushButton(Widget);
         pushButton_24->setObjectName(QString::fromUtf8("pushButton_24"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/res/images/z_s.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_24->setIcon(icon2);
 
         horizontalLayout_3->addWidget(pushButton_24);
 
@@ -114,25 +121,31 @@ public:
 
         verticalLayout_5->addWidget(label_3);
 
-        verticalSpacer_10 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_10 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_5->addItem(verticalSpacer_10);
 
-        pushButton_25 = new QPushButton(Widget);
-        pushButton_25->setObjectName(QString::fromUtf8("pushButton_25"));
+        startButton = new QPushButton(Widget);
+        startButton->setObjectName(QString::fromUtf8("startButton"));
+        startButton->setMinimumSize(QSize(0, 60));
+        startButton->setSizeIncrement(QSize(0, 0));
+        startButton->setStyleSheet(QString::fromUtf8(""));
 
-        verticalLayout_5->addWidget(pushButton_25);
+        verticalLayout_5->addWidget(startButton);
 
-        verticalSpacer_11 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_11 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_5->addItem(verticalSpacer_11);
 
-        pushButton_26 = new QPushButton(Widget);
-        pushButton_26->setObjectName(QString::fromUtf8("pushButton_26"));
+        aboutButton = new QPushButton(Widget);
+        aboutButton->setObjectName(QString::fromUtf8("aboutButton"));
+        aboutButton->setMinimumSize(QSize(0, 40));
+        aboutButton->setMaximumSize(QSize(80, 16777215));
+        aboutButton->setStyleSheet(QString::fromUtf8(""));
 
-        verticalLayout_5->addWidget(pushButton_26);
+        verticalLayout_5->addWidget(aboutButton);
 
-        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_14 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_5->addItem(verticalSpacer_14);
 
@@ -152,15 +165,7 @@ public:
         tabWidget->setSizePolicy(sizePolicy);
         tabWidget->setMinimumSize(QSize(320, 320));
         tabWidget->setMaximumSize(QSize(320, 340));
-        tabWidget->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	color: #f00;\n"
-"	background-color: rgb(151, 155, 235);\n"
-"	border: 1px solid #555;\n"
-"}\n"
-"QPushButton::hover {\n"
-"\n"
-"	border-color: rgb(255, 0, 0);\n"
-"}"));
+        tabWidget->setStyleSheet(QString::fromUtf8(""));
         tab_5 = new QWidget();
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
         gridLayout_5 = new QGridLayout(tab_5);
@@ -255,7 +260,7 @@ public:
 
         horizontalLayout->addWidget(tabWidget);
 
-        horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(55, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
@@ -272,11 +277,11 @@ public:
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "\320\232\321\200\320\265\321\201\321\202\320\270\320\272\320\270-\320\275\320\276\320\273\320\270\320\272\320\270", nullptr));
         label_2->setText(QString());
-        pushButton_23->setText(QCoreApplication::translate("Widget", "X", nullptr));
-        pushButton_24->setText(QCoreApplication::translate("Widget", "O", nullptr));
+        pushButton_23->setText(QString());
+        pushButton_24->setText(QString());
         label_3->setText(QCoreApplication::translate("Widget", "\320\237\320\276\320\261\320\265\320\264\320\260", nullptr));
-        pushButton_25->setText(QCoreApplication::translate("Widget", "\320\230\320\263\321\200\320\260\321\202\321\214", nullptr));
-        pushButton_26->setText(QCoreApplication::translate("Widget", "\320\237\321\200\320\260\320\262\320\270\320\273\320\260 \320\270\320\263\321\200\321\213", nullptr));
+        startButton->setText(QCoreApplication::translate("Widget", "\320\230\320\263\321\200\320\260\321\202\321\214", nullptr));
+        aboutButton->setText(QCoreApplication::translate("Widget", "\320\237\321\200\320\260\320\262\320\270\320\273\320\260 \320\270\320\263\321\200\321\213", nullptr));
         pushButton_17->setText(QCoreApplication::translate("Widget", "PushButton", nullptr));
         pushButton_18->setText(QCoreApplication::translate("Widget", "PushButton", nullptr));
         pushButton_20->setText(QCoreApplication::translate("Widget", "PushButton", nullptr));

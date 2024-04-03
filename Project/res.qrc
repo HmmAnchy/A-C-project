@@ -6,5 +6,8 @@
         <file>res/images/icon.png</file>
         <file>res/images/zero.png</file>
         <file>res/images/text.png</file>
+        <file>res/images/bg.png</file>
+        <file>res/images/c_s.png</file>
+        <file>res/images/z_s.png</file>
     </qresource>
 </RCC>
