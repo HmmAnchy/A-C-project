@@ -49,3 +49,57 @@ QString Style::getStartButtonsStyle()
            "background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:1, stop:0 rgba(53, 127, 176, 255), stop:0.224719 rgba(255, 255, 255, 255));"
            "}";
 }
+
+QString Style::getLeftButtonStyle()
+{
+    return "QPushButton{"
+            "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.074, y2:0.119318, stop:0.0738636 rgba(63, 63, 63, 255), stop:0.136364 rgba(255, 255, 255, 255));"
+            "background-image: url(:/res/images/c_s.png);"
+            "background-repeat:no-repeat;"
+            "background-position: center center;"
+            "border:1px solid #333;"
+            "border-top-left-radius:5px;"
+            "border-bottom-left-radius:5px;"
+           "}";
+}
+
+QString Style::getRightButtonStyle()
+{
+    return "QPushButton{"
+            "background-color: qlineargradient(spread:pad, x1:0.233, y1:1, x2:0.244, y2:1, stop:0 rgba(48, 239, 239, 218));"
+            "background-image: url(:/res/images/z_s.png);"
+            "background-repeat:no-repeat;"
+            "background-position: center center;"
+            "border:1px solid #333;"
+            "border-left:none;"
+            "border-top-left-radius:5px;"
+            "border-bottom-left-radius:5px;"
+           "}";
+}
+
+QString Style::getLeftButtonActiveStyle()
+{
+    return "QPushButton{"
+            "background-color: #30efef;"
+            "background-image: url(:/res/images/c_s.png);"
+            "background-repeat:no-repeat;"
+            "background-position: center center;"
+            "border:1px solid #333;"
+            "border-top-left-radius:5px;"
+            "border-bottom-left-radius:5px;"
+           "}";
+}
+
+QString Style::getRightButtonActiveStyle()
+{
+    return "QPushButton{"
+            "background-color: #2d313b;"
+            "background-image: url(:/res/images/z_s.png);"
+            "background-repeat:no-repeat;"
+            "background-position: center center;"
+            "border:1px solid #333;"
+            "border-left:none;"
+            "border-top-left-radius:5px;"
+            "border-bottom-left-radius:5px;"
+           "}";
+}

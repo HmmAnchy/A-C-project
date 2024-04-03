@@ -38,4 +38,6 @@ void Widget::setInterfaceStyle()
     this->setStyleSheet(Style::getMainWidgetStyle());
     ui->startButton->setStyleSheet(Style::getStartButtonsStyle());
     ui->aboutButton->setStyleSheet(Style::getStartButtonsStyle());
+    ui->leftButton->setStyleSheet(Style::getLeftButtonActiveStyle());
+    ui->rightButton->setStyleSheet(Style::getRightButtonStyle());
 }
