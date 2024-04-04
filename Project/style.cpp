@@ -54,7 +54,7 @@ QString Style::getLeftButtonStyle()
 {
     return "QPushButton{"
             "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.074, y2:0.119318, stop:0.0738636 rgba(63, 63, 63, 255), stop:0.136364 rgba(255, 255, 255, 255));"
-            "background-image: url(:/res/images/c_s.png);"
+            "background-image: url(:/res/images/xx _.png);"
             "background-repeat:no-repeat;"
             "background-position: center center;"
             "border:1px solid #333;"
@@ -66,8 +66,8 @@ QString Style::getLeftButtonStyle()
 QString Style::getRightButtonStyle()
 {
     return "QPushButton{"
-            "background-color: qlineargradient(spread:pad, x1:0.233, y1:1, x2:0.244, y2:1, stop:0 rgba(48, 239, 239, 218));"
-            "background-image: url(:/res/images/z_s.png);"
+            "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.074, y2:0.119318, stop:0.0738636 rgba(63, 63, 63, 255), stop:0.136364 rgba(255, 255, 255, 255));"
+            "background-image: url(:/res/images/00_.png);"
             "background-repeat:no-repeat;"
             "background-position: center center;"
             "border:1px solid #333;"
@@ -80,8 +80,8 @@ QString Style::getRightButtonStyle()
 QString Style::getLeftButtonActiveStyle()
 {
     return "QPushButton{"
-            "background-color: #30efef;"
-            "background-image: url(:/res/images/c_s.png);"
+            "background-color: #2d313b;"
+            "background-image: url(:/res/images/xx _.png);"
             "background-repeat:no-repeat;"
             "background-position: center center;"
             "border:1px solid #333;"
@@ -94,7 +94,7 @@ QString Style::getRightButtonActiveStyle()
 {
     return "QPushButton{"
             "background-color: #2d313b;"
-            "background-image: url(:/res/images/z_s.png);"
+            "background-image: url(:/res/images/00_.png);"
             "background-repeat:no-repeat;"
             "background-position: center center;"
             "border:1px solid #333;"
@@ -102,4 +102,132 @@ QString Style::getRightButtonActiveStyle()
             "border-top-left-radius:5px;"
             "border-bottom-left-radius:5px;"
            "}";
+}
+
+QString Style::getTabWidgetStyle()
+{
+    return "QTabWidget{"
+            "border: none;"
+            "}"
+           "QTabWidget::pane{"
+            "border:1px solid #222;"
+            "border-radius:3px;"
+            "}";
+}
+
+QString Style::getTabStyle()
+{
+    return "QWidget#tab_5{"
+    "background:rgb(34,34,34);"
+           "}";
+}
+
+QString Style::getBlankButtonStyle()
+{
+    return "QPushButton{"
+            " border:none;"
+            "background:#D9D9D9;"
+            "}"
+            "QPushButton::hover{"
+            "background:#372D39;"
+           "}";
+}
+
+QString Style::getCrossNormalStyle()
+{
+    return "QPushButton{"
+            " border:none;"
+            "background:#D9D9D9 url(:/res/images/xx (1).png) no-repeat center center;"
+            "}"
+            "QPushButton::hover{"
+            "background-color:#372D39;"
+           "}";
+}
+
+QString Style::getCrossVictoryStyle()
+{
+    return "QPushButton{"
+            " border:none;"
+            "background-color:#69cf58;"
+            "background-image: url(:/res/images/xx (1).png);"
+            "background-repeat: no-repeat;"
+            "background-position: center center;"
+           "}";
+}
+
+QString Style::getCrossLostStyle()
+{
+    return "QPushButton{"
+            " border:none;"
+            "background-color:#b62ccb;"
+            "background-image: url(:/res/images/xx (1).png);"
+            "background-repeat: no-repeat;"
+            "background-position: center center;"
+           "}";
+}
+
+QString Style::getZeroNormalStyle()
+{
+    return "QPushButton{"
+            " border:none;"
+            "background:#D9D9D9 url(:/res/images/00.png) no-repeat center center;"
+            "}"
+            "QPushButton::hover{"
+            "background-color:#372D39;"
+           "}";
+}
+
+QString Style::getZeroVictoryStyle()
+{
+    return "QPushButton{"
+            " border:none;"
+            "background-color:#69cf58;"
+            "background-image: url(:/res/images/00.png);"
+            "background-repeat: no-repeat;"
+            "background-position: center center;"
+           "}";
+}
+
+QString Style::getZeroLostStyle()
+{
+    return "QPushButton{"
+            " border:none;"
+            "background-color:#b62ccb;"
+            "background-image: url(:/res/images/00.png);"
+            "background-repeat: no-repeat;"
+            "background-position: center center;"
+           "}";
+}
+
+QString Style::getNormalMessageStyle()
+{
+    return "QLabel{"
+            "font-Family: 'Roboto Medium';"
+            "font-size:14px;"
+            "background:#b62ccb;"
+            "border:1px solid #b62ccb;"
+            "color: #000000"
+            "}";
+}
+
+QString Style::getVictoryMessageStyle()
+{
+    return "QLabel{"
+            "font-Family: 'Roboto Medium';"
+            "font-size:14px;"
+            "background:#69cf58;"
+            "border:1px solid #69cf58;"
+            "color: #000000"
+            "}";
+}
+
+QString Style::getLostMessageStyle()
+{
+    return "QLabel{"
+            "font-Family: 'Roboto Medium';"
+            "font-size:14px;"
+            "background:#b62ccb;"
+            "border:1px solid #b62ccb;"
+            "color: #000000"
+            "}";
 }

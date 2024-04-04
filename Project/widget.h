@@ -17,8 +17,14 @@ public:
     ~Widget();
 protected:
     void paintEvent(QPaintEvent *event);
+private slots:
+    void on_leftButton_clicked();
+
+    void on_rightButton_clicked();
+
 private:
     Ui::Widget *ui;
     void setInterfaceStyle();
+    void changetButtonStyle(int num);
 };
 #endif // WIDGET_H

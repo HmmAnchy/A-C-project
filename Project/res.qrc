@@ -2,12 +2,15 @@
     <qresource prefix="/">
         <file>res/fonts/Roboto Medium Italic.ttf</file>
         <file>res/fonts/Roboto Medium.ttf</file>
-        <file>res/images/cross.png</file>
         <file>res/images/icon.png</file>
-        <file>res/images/zero.png</file>
         <file>res/images/text.png</file>
         <file>res/images/bg.png</file>
         <file>res/images/c_s.png</file>
         <file>res/images/z_s.png</file>
+        <file>res/images/name.png</file>
+        <file>res/images/xx (1).png</file>
+        <file>res/images/00.png</file>
+        <file>res/images/00_.png</file>
+        <file>res/images/xx _.png</file>
     </qresource>
 </RCC>
