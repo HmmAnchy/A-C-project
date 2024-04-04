@@ -299,7 +299,7 @@ background:none;
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab_5">
+     <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>Игра</string>
       </attribute>
@@ -495,7 +495,7 @@ background:none;
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_6">
+     <widget class="QWidget" name="tab_2">
       <attribute name="title">
        <string>Правила игры</string>
       </attribute>

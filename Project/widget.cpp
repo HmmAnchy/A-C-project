@@ -5,18 +5,20 @@
 #include <QStyleOption>
 #include <QDebug>
 #include <QFontDatabase>
+#include <QGridLayout>
+#include <time.h>
+
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    ui->tabWidget->tabBar()->hide(); // скрывает заголовоки объекта tabWidget(игровое поле)
-    ui->tabWidget->setMaximumHeight(320); //перезаписываем высоту объекта tabwidget на 320, значение 340 - для глаза
-    ui->tabWidget->setCurrentIndex(0); // по умолчанию запускалось игровое поле
+    configurationTabWidget();
+    addFonts();
     setInterfaceStyle();
-    int id = QFontDatabase::addApplicationFont(":/res/fonts/Roboto Medium.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    qDebug() << family;
+    configurationGameAreaButons();
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &Widget::onComputerSlot);
 }
 
 Widget::~Widget()
@@ -24,6 +26,7 @@ Widget::~Widget()
     delete ui;
 }
 
+// Применяем к Widget правила QSS
 void Widget::paintEvent(QPaintEvent *event)
 {
     QStyleOption opt;
@@ -33,6 +36,7 @@ void Widget::paintEvent(QPaintEvent *event)
     QWidget::paintEvent(event);
 }
 
+// Назначенаем правила QSS для элементов интерфейса
 void Widget::setInterfaceStyle()
 {
     this->setStyleSheet(Style::getMainWidgetStyle());
@@ -41,20 +45,17 @@ void Widget::setInterfaceStyle()
     ui->leftButton->setStyleSheet(Style::getLeftButtonActiveStyle());
     ui->rightButton->setStyleSheet(Style::getRightButtonStyle());
     ui->tabWidget->setStyleSheet(Style::getTabWidgetStyle());
-    ui->tab_5->setStyleSheet(Style::getTabStyle());
-    ui->pushButton_0_0->setStyleSheet(Style::getBlankButtonStyle());
-    ui->pushButton_0_1->setStyleSheet(Style::getCrossNormalStyle());
-    ui->pushButton_0_2->setStyleSheet(Style::getCrossVictoryStyle());
-    ui->pushButton_1_0->setStyleSheet(Style::getCrossLostStyle());
-
-    ui->pushButton_2_0->setStyleSheet(Style::getZeroNormalStyle());
-    ui->pushButton_2_1->setStyleSheet(Style::getZeroVictoryStyle());
-    ui->pushButton_2_2->setStyleSheet(Style::getZeroLostStyle());
+    ui->tab->setStyleSheet(Style::getTabStyle());
 
     ui->messageLabel->setStyleSheet(Style::getVictoryMessageStyle());
     ui->messageLabel->setText("Ходят крестики");
+
+    setGameAreaButtonsStyle();
+    ui->messageLabel->setText("");
+    ui->messageLabel->setStyleSheet(Style::getNormalMessageStyle());
 }
 
+// Переключаем выбор крестики-нолики
 void Widget::changetButtonStyle(int num)
 {
     if(num==1) {
@@ -67,12 +68,143 @@ void Widget::changetButtonStyle(int num)
     }
 }
 
+// Если игрок выбрал крестики
 void Widget::on_leftButton_clicked()
 {
     changetButtonStyle(1);
+    player = 'X';
 }
 
+// Если игрок выбрал нолики
 void Widget::on_rightButton_clicked()
 {
     changetButtonStyle(2);
+    player = '0';
+}
+
+ // Скрываем заголовок, выставляем высоту и текущую вкладку tabWidge
+void Widget::configurationTabWidget()
+{
+    ui->tabWidget->tabBar()->hide();
+    ui->tabWidget->setMaximumHeight(320); //перезаписываем высоту объекта tabwidget на 320
+    ui->tabWidget->setCurrentIndex(0); // по умолчанию запускалось игровое поле
+}
+
+// Добавленяем шрифты из ресурсов в базу шрифтов
+void Widget::addFonts()
+{
+    QFontDatabase::addApplicationFont(":/res/fonts/Roboto Medium.ttf");
+    int id=QFontDatabase::addApplicationFont(":/res/fonts/Roboto Medium Italic.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    qDebug() << family;
+}
+
+//Изменяем QSS одной кнопки на игровом поле
+void Widget::changeButtonStyle(int row, int colum, QString style)
+{
+    QGridLayout *grid = qobject_cast <QGridLayout*>(ui->tab->layout());
+    QPushButton *btn = qobject_cast <QPushButton*>(grid->itemAtPosition(row, colum)->widget());
+    btn->setStyleSheet(style);
+}
+
+
+void Widget::configurationGameAreaButons()
+{
+    QGridLayout *grid = qobject_cast <QGridLayout*>(ui->tab->layout());
+    for(int row=0; row<3; row++) {
+        for(int column=0; column<3; column++) {
+            QPushButton *btn = qobject_cast <QPushButton*>(grid->itemAtPosition(row, column)->widget());
+            btn->setProperty("row", row);
+            btn->setProperty("column", column);
+            connect(btn, &QPushButton::clicked, this, &Widget::onGameAreaButtonClicked);
+        }
+    }
+}
+
+//Нейтральный стиль для всех кнопок  на игровом поле
+void Widget::setGameAreaButtonsStyle()
+{
+    QString style = Style::getBlankButtonStyle();
+    for(int row=0; row<3; row++) {
+        for(int column=0; column<3; column++) {
+            changeButtonStyle(row, column, style);
+        }
+    }
+}
+
+// Начало игры
+void Widget::start()
+{
+    for (int r=0; r<3; r++) {
+        for (int c=0; c<3; c++) {
+            gameArea[r][c] = '-';
+        }
+    }
+    progress = 0;
+    gameStart = true;
+}
+
+void Widget::lockPlayer()
+{
+    if(player == 'X'){
+        playerLocked = false;
+    }else{
+        playerLocked = true;
+    }
+}
+
+// Клик по кнопке Играть-Сдаюсь
+void Widget::on_startButton_clicked()
+{
+    if(gameStart) {
+        playerLocked = true;
+        ui->startButton->setText("Играть");
+        ui->startButton->setStyleSheet(Style::getStartButtonsStyle());
+        ui->leftButton->setDisabled(false);
+        ui->rightButton->setDisabled(false);
+        gameStart = false;
+        ui->messageLabel->setText("Проиграл");
+        ui->messageLabel->setStyleSheet(Style::getLostMessageStyle());
+    }else{
+        start();
+        lockPlayer();
+        ui->startButton->setText("Сдаюсь...");
+        ui->startButton->setStyleSheet(Style::getStartButtonGameStyle());
+        ui->leftButton->setDisabled(true);
+        ui->rightButton->setDisabled(true);
+        ui->messageLabel->setText("Поехали!");
+        ui->messageLabel->setStyleSheet(Style::getNormalMessageStyle());
+    }
+}
+
+void Widget::onGameAreaButtonClicked()
+{
+    if(!playerLocked) {
+    QPushButton *btn = qobject_cast<QPushButton*>(sender());
+    int row = btn->property("row").toInt();
+    int column = btn->property("column").toInt();
+    //qDebug() << row << ":" << column;
+    QString style;
+    if(player == 'X')
+        style = Style::getCrossNormalStyle();
+    else
+        style = Style::getZeroNormalStyle();
+        changeButtonStyle(row, column, style);
+        playerLocked = true;
+
+    }
+}
+
+void Widget::onComputerSlot()
+{
+    srand(time(0));
+    int index = rand()%4;
+    QStringList list = {"Мой ход", "Так так так...", "Хм...Сложно...", "Дайте подумать..."};
+    ui->messageLabel->setText(list.at(index));
+    timer->start(2000);
+}
+
+void Widget::onComputerSlot()
+{
+
 }

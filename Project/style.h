@@ -8,6 +8,7 @@ class Style
 public:
     static QString getMainWidgetStyle();
     static QString getStartButtonsStyle();
+    static QString getStartButtonGameStyle();
     static QString getLeftButtonStyle();
     static QString getRightButtonStyle();
     static QString getLeftButtonActiveStyle();

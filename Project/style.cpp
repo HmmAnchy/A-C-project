@@ -50,10 +50,29 @@ QString Style::getStartButtonsStyle()
            "}";
 }
 
+QString Style::getStartButtonGameStyle()
+{
+    return  "QPushButton#startButton{"
+       "color:#000000;"
+       "background: none;"
+       "border: none;"
+       "border-radius:19px;"
+       "background-color: qlineargradient(spread:pad, x1:0.233, y1:1, x2:0.244, y2:1, stop:0 rgba(223, 0, 0, 212));"
+       "font-size:18px;"
+       "}"
+       "QPushButton#startButton::hover{"
+       "background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:1, stop:0.672316 rgba(239, 72, 72, 255), stop:0.847458 rgba(239, 18, 18, 255));"
+       "}"
+
+       "QPushButton#startButton::pressed{"
+       "background-color: qlineargradient(spread:pad, x1:0.233, y1:1, x2:0.244, y2:1, stop:0 rgba(223, 0, 0, 212));"
+       "}";
+}
+
 QString Style::getLeftButtonStyle()
 {
     return "QPushButton{"
-            "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.074, y2:0.119318, stop:0.0738636 rgba(63, 63, 63, 255), stop:0.136364 rgba(255, 255, 255, 255));"
+            "background-color: qlineargradient(spread:pad, x1:0.233, y1:1, x2:0.244, y2:1, stop:0 rgba(119, 130, 156, 198));"
             "background-image: url(:/res/images/xx _.png);"
             "background-repeat:no-repeat;"
             "background-position: center center;"
@@ -66,7 +85,7 @@ QString Style::getLeftButtonStyle()
 QString Style::getRightButtonStyle()
 {
     return "QPushButton{"
-            "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.074, y2:0.119318, stop:0.0738636 rgba(63, 63, 63, 255), stop:0.136364 rgba(255, 255, 255, 255));"
+            "background-color: qlineargradient(spread:pad, x1:0.233, y1:1, x2:0.244, y2:1, stop:0 rgba(119, 130, 156, 198));"
             "background-image: url(:/res/images/00_.png);"
             "background-repeat:no-repeat;"
             "background-position: center center;"
@@ -117,7 +136,7 @@ QString Style::getTabWidgetStyle()
 
 QString Style::getTabStyle()
 {
-    return "QWidget#tab_5{"
+    return "QWidget#tab{"
     "background:rgb(34,34,34);"
            "}";
 }
@@ -129,7 +148,7 @@ QString Style::getBlankButtonStyle()
             "background:#D9D9D9;"
             "}"
             "QPushButton::hover{"
-            "background:#372D39;"
+            "background:#c2c2c2;"
            "}";
 }
 
@@ -140,7 +159,7 @@ QString Style::getCrossNormalStyle()
             "background:#D9D9D9 url(:/res/images/xx (1).png) no-repeat center center;"
             "}"
             "QPushButton::hover{"
-            "background-color:#372D39;"
+            "background-color:#c2c2c2;"
            "}";
 }
 
@@ -173,7 +192,7 @@ QString Style::getZeroNormalStyle()
             "background:#D9D9D9 url(:/res/images/00.png) no-repeat center center;"
             "}"
             "QPushButton::hover{"
-            "background-color:#372D39;"
+            "background-color:#c2c2c2;"
            "}";
 }
 
@@ -204,8 +223,8 @@ QString Style::getNormalMessageStyle()
     return "QLabel{"
             "font-Family: 'Roboto Medium';"
             "font-size:14px;"
-            "background:#b62ccb;"
-            "border:1px solid #b62ccb;"
+            "background: none;"
+            "border:none;"
             "color: #000000"
             "}";
 }
