@@ -28,7 +28,7 @@ private slots:
 private:
     Ui::Widget *ui;
     void setInterfaceStyle();
-    void changetButtonStyle(int num);
+    void changetButtonStatus(int num);
 
     void configurationTabWidget();
     void addFonts();
@@ -39,6 +39,7 @@ private:
     void lockPlayer();
     void computerInGame();
     void chekGameStop();
+    void endGame();
     char gameArea[3][3] = {
         {'-','-','-'},
         {'-','-','-'},

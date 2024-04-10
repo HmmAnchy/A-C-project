@@ -56,7 +56,7 @@ void Widget::setInterfaceStyle()
 }
 
 // Переключаем выбор крестики-нолики
-void Widget::changetButtonStyle(int num)
+void Widget::changetButtonStatus(int num)
 {
     if(num==1) {
         ui->leftButton->setStyleSheet(Style::getLeftButtonActiveStyle());
@@ -71,14 +71,14 @@ void Widget::changetButtonStyle(int num)
 // Если игрок выбрал крестики
 void Widget::on_leftButton_clicked()
 {
-    changetButtonStyle(1);
+    changetButtonStatus(1);
     player = 'X';
 }
 
 // Если игрок выбрал нолики
 void Widget::on_rightButton_clicked()
 {
-    changetButtonStyle(2);
+    changetButtonStatus(2);
     player = '0';
 }
 
@@ -143,6 +143,7 @@ void Widget::start()
     }
     progress = 0;
     gameStart = true;
+    stop = false;
     if(player!='X')
         computerInGame();
 }
@@ -186,7 +187,6 @@ void Widget::onGameAreaButtonClicked()
     QPushButton *btn = qobject_cast<QPushButton*>(sender());
     int row = btn->property("row").toInt();
     int column = btn->property("column").toInt();
-    //qDebug() << row << ":" << column;
     QString style;
     if(player == 'X'){
         style = Style::getCrossNormalStyle();
@@ -197,6 +197,8 @@ void Widget::onGameAreaButtonClicked()
     }
         changeButtonStyle(row, column, style);
         playerLocked = true;
+        chekGameStop();
+        endGame();
         computerInGame();
 
     }
@@ -204,34 +206,65 @@ void Widget::onGameAreaButtonClicked()
 
 void Widget::computerInGame()
 {
+    if(stop)
+        return;
     srand(time(0));
     int index = rand()%4;
     QStringList list = {"Мой ход", "Так так так...", "Хм...Сложно...", "Дайте подумать..."};
     ui->messageLabel->setText(list.at(index));
-    timer->start(2000); //2 сек
+    timer->start(2000); // 2 сек
 }
 
 void Widget::chekGameStop()
 {
     winner = '-';
-    char symbols[2] = {'X', '0'};
-    for (int i=0;i<2;i++){
-        for(int row=0;row<3;row++) {
-            if((gameArea[row][0]==symbols[i]) and (gameArea[row][1]==symbols[i]) and (gameArea[row][2]==symbols[i])){
+    char symbols[2] {'X','0'};
+    for(int i=0;i<2;i++){
+        for(int row=0;row<3;row++){
+            if((gameArea[row][0]==symbols[i])and(gameArea[row][1]==symbols[i])and(gameArea[row][2]==symbols[i])){
                 stop = true;
                 winner = symbols[i];
                 return;
             }
         }
-        for(int col=0;col<3;col++) {
-            if((gameArea[0][col]=symbols[i])and(gameArea[1][col]=symbols[i])and(gameArea[2][col]=symbols[i])) {
+        for(int col=0;col<3;col++){
+            if((gameArea[0][col]==symbols[i])and(gameArea[1][col]==symbols[i])and(gameArea[2][col]==symbols[i])){
                 stop = true;
                 winner = symbols[i];
                 return;
             }
         }
+        if((gameArea[0][0]==symbols[i])and(gameArea[1][1]==symbols[i])and(gameArea[2][2]==symbols[i])){
+            stop = true;
+            winner = symbols[i];
+            return;
+        }
+        if((gameArea[0][2]==symbols[i])and(gameArea[1][1]==symbols[i])and(gameArea[2][0]==symbols[i])){
+            stop = true;
+            winner = symbols[i];
+            return;
+        }
+    }
+}
 
-  }
+void Widget::endGame()
+{
+    playerLocked = true;
+    if(stop){
+        if(winner == player){
+            ui->messageLabel->setText("Победа!");
+            ui->messageLabel->setStyleSheet(Style::getVictoryMessageStyle());
+        }else{
+            ui->messageLabel->setText("Проиграл");
+            ui->messageLabel->setStyleSheet(Style::getLostMessageStyle());
+        }
+        playerLocked = true;
+        ui->startButton->setText("Играть");
+        ui->startButton->setStyleSheet(Style::getStartButtonsStyle());
+        ui->leftButton->setDisabled(false);
+        ui->rightButton->setDisabled(false);
+        gameStart = false;
+    }
 }
 
 void Widget::onComputerSlot()
@@ -251,8 +284,11 @@ void Widget::onComputerSlot()
     int column = rand()%3;
            if(gameArea[row][column]=='-'){
                gameArea[row][column] = comp;
+
                changeButtonStyle(row,column, style);
                ui->messageLabel->setText("Твой ход!");
+               chekGameStop();
+               endGame();
                playerLocked = false;
                break;
            }
