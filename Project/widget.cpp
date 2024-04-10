@@ -18,7 +18,7 @@ Widget::Widget(QWidget *parent)
     setInterfaceStyle();
     configurationGameAreaButons();
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Widget::onComputerSlot);
+   connect(timer, &QTimer::timeout, this, &Widget::onComputerSlot);
 }
 
 Widget::~Widget()
@@ -135,6 +135,7 @@ void Widget::setGameAreaButtonsStyle()
 // Начало игры
 void Widget::start()
 {
+    setGameAreaButtonsStyle();
     for (int r=0; r<3; r++) {
         for (int c=0; c<3; c++) {
             gameArea[r][c] = '-';
@@ -142,6 +143,8 @@ void Widget::start()
     }
     progress = 0;
     gameStart = true;
+    if(player!='X')
+        computerInGame();
 }
 
 void Widget::lockPlayer()
@@ -166,14 +169,14 @@ void Widget::on_startButton_clicked()
         ui->messageLabel->setText("Проиграл");
         ui->messageLabel->setStyleSheet(Style::getLostMessageStyle());
     }else{
+        ui->messageLabel->setText("Поехали!");
+        ui->messageLabel->setStyleSheet(Style::getNormalMessageStyle());
         start();
         lockPlayer();
         ui->startButton->setText("Сдаюсь...");
         ui->startButton->setStyleSheet(Style::getStartButtonGameStyle());
         ui->leftButton->setDisabled(true);
         ui->rightButton->setDisabled(true);
-        ui->messageLabel->setText("Поехали!");
-        ui->messageLabel->setStyleSheet(Style::getNormalMessageStyle());
     }
 }
 
@@ -185,26 +188,74 @@ void Widget::onGameAreaButtonClicked()
     int column = btn->property("column").toInt();
     //qDebug() << row << ":" << column;
     QString style;
-    if(player == 'X')
+    if(player == 'X'){
         style = Style::getCrossNormalStyle();
-    else
+        gameArea[row][column] = 'X';
+    }else{
         style = Style::getZeroNormalStyle();
+        gameArea[row][column] = '0';
+    }
         changeButtonStyle(row, column, style);
         playerLocked = true;
+        computerInGame();
 
     }
 }
 
-void Widget::onComputerSlot()
+void Widget::computerInGame()
 {
     srand(time(0));
     int index = rand()%4;
     QStringList list = {"Мой ход", "Так так так...", "Хм...Сложно...", "Дайте подумать..."};
     ui->messageLabel->setText(list.at(index));
-    timer->start(2000);
+    timer->start(2000); //2 сек
+}
+
+void Widget::chekGameStop()
+{
+    winner = '-';
+    char symbols[2] = {'X', '0'};
+    for (int i=0;i<2;i++){
+        for(int row=0;row<3;row++) {
+            if((gameArea[row][0]==symbols[i]) and (gameArea[row][1]==symbols[i]) and (gameArea[row][2]==symbols[i])){
+                stop = true;
+                winner = symbols[i];
+                return;
+            }
+        }
+        for(int col=0;col<3;col++) {
+            if((gameArea[0][col]=symbols[i])and(gameArea[1][col]=symbols[i])and(gameArea[2][col]=symbols[i])) {
+                stop = true;
+                winner = symbols[i];
+                return;
+            }
+        }
+
+  }
 }
 
 void Widget::onComputerSlot()
 {
+   char comp;
+   QString style;
+   if(player=='X') {
+       comp = '0';
+   style = Style::getZeroNormalStyle();
+   }else{
+       comp = 'X';
+       style = Style::getCrossNormalStyle();
+   }
+    timer->stop();
+    while(true){
+    int row = rand()%3;
+    int column = rand()%3;
+           if(gameArea[row][column]=='-'){
+               gameArea[row][column] = comp;
+               changeButtonStyle(row,column, style);
+               ui->messageLabel->setText("Твой ход!");
+               playerLocked = false;
+               break;
+           }
+       }
+   }
 
-}

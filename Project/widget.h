@@ -38,6 +38,7 @@ private:
     void start();
     void lockPlayer();
     void computerInGame();
+    void chekGameStop();
     char gameArea[3][3] = {
         {'-','-','-'},
         {'-','-','-'},
@@ -48,6 +49,8 @@ private:
     bool gameStart = false;
     bool playerLocked = true;
     QTimer *timer;
+    bool stop;
+    char winner;
 };
 
 #endif // WIDGET_H
