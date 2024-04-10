@@ -197,6 +197,7 @@ void Widget::onGameAreaButtonClicked()
     }
         changeButtonStyle(row, column, style);
         playerLocked = true;
+        progress++;
         chekGameStop();
         endGame();
         computerInGame();
@@ -245,15 +246,21 @@ void Widget::chekGameStop()
             return;
         }
     }
+    if(progress==9){
+        stop = true;
+    }
 }
 
 void Widget::endGame()
 {
-    playerLocked = true;
+    //playerLocked = true;
     if(stop){
         if(winner == player){
             ui->messageLabel->setText("Победа!");
             ui->messageLabel->setStyleSheet(Style::getVictoryMessageStyle());
+        }else if(winner == '-'){
+            ui->messageLabel->setText("Ничья!");
+            ui->messageLabel->setStyleSheet(Style::getDrawMessageStyle());
         }else{
             ui->messageLabel->setText("Проиграл");
             ui->messageLabel->setStyleSheet(Style::getLostMessageStyle());
@@ -287,6 +294,7 @@ void Widget::onComputerSlot()
 
                changeButtonStyle(row,column, style);
                ui->messageLabel->setText("Твой ход!");
+               progress++;
                chekGameStop();
                endGame();
                playerLocked = false;

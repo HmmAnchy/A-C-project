@@ -27,6 +27,7 @@ public:
     static QString getNormalMessageStyle();
     static QString getVictoryMessageStyle();
     static QString getLostMessageStyle();
+    static QString getDrawMessageStyle();
 };
 
 

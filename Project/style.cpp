@@ -248,5 +248,18 @@ QString Style::getLostMessageStyle()
             "background:#b62ccb;"
             "border:1px solid #b62ccb;"
             "color: #000000"
-            "}";
+           "}";
 }
+
+QString Style::getDrawMessageStyle()
+{
+    return "QLabel{"
+           "font-Family: 'Roboto Medium';"
+           "font-size:14px;"
+           "background:#b2c3dd;"
+           "border:1px solid #b2c3dd;"
+           "color: #000000"
+           "}";
+}
+
+
