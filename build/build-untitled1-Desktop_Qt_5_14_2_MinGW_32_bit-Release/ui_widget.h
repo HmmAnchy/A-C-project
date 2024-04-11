@@ -31,15 +31,11 @@ public:
     QVBoxLayout *verticalLayout_5;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_2;
-    QSpacerItem *verticalSpacer_2;
     QLabel *messageLabel;
-    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *leftButton;
     QPushButton *rightButton;
-    QSpacerItem *verticalSpacer_10;
     QPushButton *startButton;
-    QSpacerItem *verticalSpacer_11;
     QPushButton *aboutButton;
     QSpacerItem *verticalSpacer_14;
     QSpacerItem *horizontalSpacer_4;
@@ -57,7 +53,7 @@ public:
     QPushButton *pushButton_2_2;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
+    QLabel *aboutTextLabel;
     QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QWidget *Widget)
@@ -73,11 +69,12 @@ public:
         Widget->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout = new QHBoxLayout(Widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_5);
 
         verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setSpacing(20);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -93,10 +90,6 @@ public:
 
         verticalLayout_5->addWidget(label_2);
 
-        verticalSpacer_2 = new QSpacerItem(0, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_5->addItem(verticalSpacer_2);
-
         messageLabel = new QLabel(Widget);
         messageLabel->setObjectName(QString::fromUtf8("messageLabel"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -108,10 +101,6 @@ public:
         messageLabel->setAlignment(Qt::AlignCenter);
 
         verticalLayout_5->addWidget(messageLabel);
-
-        verticalSpacer = new QSpacerItem(0, 12, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_5->addItem(verticalSpacer);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(0);
@@ -131,10 +120,6 @@ public:
 
         verticalLayout_5->addLayout(horizontalLayout_3);
 
-        verticalSpacer_10 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_5->addItem(verticalSpacer_10);
-
         startButton = new QPushButton(Widget);
         startButton->setObjectName(QString::fromUtf8("startButton"));
         startButton->setMinimumSize(QSize(0, 60));
@@ -142,10 +127,6 @@ public:
         startButton->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_5->addWidget(startButton);
-
-        verticalSpacer_11 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_5->addItem(verticalSpacer_11);
 
         aboutButton = new QPushButton(Widget);
         aboutButton->setObjectName(QString::fromUtf8("aboutButton"));
@@ -155,14 +136,14 @@ public:
 
         verticalLayout_5->addWidget(aboutButton);
 
-        verticalSpacer_14 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_5->addItem(verticalSpacer_14);
 
 
         horizontalLayout->addLayout(verticalLayout_5);
 
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_4);
 
@@ -260,24 +241,24 @@ public:
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
         verticalLayout = new QVBoxLayout(tab_2);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label = new QLabel(tab_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+        aboutTextLabel = new QLabel(tab_2);
+        aboutTextLabel->setObjectName(QString::fromUtf8("aboutTextLabel"));
+        aboutTextLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(aboutTextLabel);
 
         tabWidget->addTab(tab_2, QString());
 
         horizontalLayout->addWidget(tabWidget);
 
-        horizontalSpacer_2 = new QSpacerItem(55, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(35, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
 
         retranslateUi(Widget);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Widget);
@@ -302,7 +283,9 @@ public:
         pushButton_1_1->setText(QString());
         pushButton_2_2->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("Widget", "\320\230\320\263\321\200\320\260", nullptr));
-        label->setText(QCoreApplication::translate("Widget", "TextLabel", nullptr));
+        aboutTextLabel->setText(QCoreApplication::translate("Widget", "<html><head/><body><p align=\"center\">\320\230\320\263\321\200\320\276\320\272 \320\262\321\213\320\261\320\270\321\200\320\260\320\265\321\202 &quot;X&quot; \320\270\320\273\320\270 &quot;0&quot;. </p><p>\320\225\321\201\320\273\320\270 \320\270\320\263\321\200\320\276\320\272 \320\262\321\213\320\261\320\270\321\200\320\260\320\265\321\202 &quot;X&quot;, \321\202\320\276 \320\276\320\275 \321\205\320\276\320\264\320\270\321\202 \320\277\320\265\321\200\320\262\321\213\320\274, \320\260 </p><p>\320\265\321\201\320\273\320\270 &quot;0&quot; - \320\272\320\276\320\274\320\277\321\214\321\216\321\202\320\265\321\200.</p><p><br/>\320\222\321\213\320\270\320\263\321\200\321\213\320\262\320\260\320\265\321\202 \321\202\320\276\321\202, \320\272\321\202\320\276 \320\277\320\265\321\200\320\262\321\213\320\274 \320\277\320\276\321\201\321\202\321\200\320\270\321\202\321\214 \320\273\320\270\320\275\320\270\321\216 \320\270\320\267</p><p>\321\202\321\200\320\265\321\205 \321\201\320\262\320\276\320\270\321\205 \321\201"
+                        "\320\270\320\274\320\262\320\276\320\273\320\276\320\262 \320\277\320\276 \320\263\320\276\321\200\320\270\320\267\320\276\320\275\321\202\320\260\320\273\320\270, \320\262\320\265\321\200\321\202\320\270\320\272\320\260\320\273\320\270</p><p>\320\270\320\273\320\270 \320\264\320\270\320\260\320\263\320\276\320\275\320\260\320\273\320\270. \320\225\321\201\320\273\320\270 \320\262\321\201\320\265 \320\272\320\273\320\265\321\202\320\272\320\270 \320\267\320\260\320\277\320\276\320\273\320\275\320\265\320\275\321\213, \320\260 \320\275\320\270</p><p>\320\276\320\264\320\275\320\276\320\263\320\276 \320\270\320\263\321\200\320\276\320\272\320\260 \320\275\320\265 \320\277\320\276\321\201\321\202\320\276\321\200\320\265\320\275\320\260 \320\273\320\270\320\275\320\270\321\217 \320\270\320\267 \321\202\321\200\320\265\321\205 \321\201\320\270\320\274-</p><p>\320\262\320\276\320\273\320\276\320\262, \320\270\320\263\321\200\320\260 \320\276\320\261\321\212\321\217\320\262\320\273\321\217\320\265\321\202\321\201\321"
+                        "\217 \320\275\320\270\321\207\321\214\320\265\320\271.</p><p><br/></p></body></html>", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("Widget", "\320\237\321\200\320\260\320\262\320\270\320\273\320\260 \320\270\320\263\321\200\321\213", nullptr));
     } // retranslateUi
 

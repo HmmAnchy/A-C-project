@@ -262,4 +262,14 @@ QString Style::getDrawMessageStyle()
            "}";
 }
 
+QString Style::getAboutTextStyle()
+{
+    return "QLabel{"
+           "font-Family: 'Roboto Medium';"
+           "font-size:12px;"
+           "color: #ffffff;"
+           "font-style:Italic;"
+            "}";
+}
+
 

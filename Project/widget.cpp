@@ -51,8 +51,9 @@ void Widget::setInterfaceStyle()
     ui->messageLabel->setText("Ходят крестики");
 
     setGameAreaButtonsStyle();
-    ui->messageLabel->setText("");
+    ui->messageLabel->setText("Вы за крестики!");
     ui->messageLabel->setStyleSheet(Style::getNormalMessageStyle());
+    ui->aboutTextLabel->setStyleSheet(Style::getAboutTextStyle());
 }
 
 // Переключаем выбор крестики-нолики
@@ -73,6 +74,8 @@ void Widget::on_leftButton_clicked()
 {
     changetButtonStatus(1);
     player = 'X';
+    ui->messageLabel->setText("Вы за крестики!");
+    ui->messageLabel->setStyleSheet(Style::getNormalMessageStyle());
 }
 
 // Если игрок выбрал нолики
@@ -80,6 +83,8 @@ void Widget::on_rightButton_clicked()
 {
     changetButtonStatus(2);
     player = '0';
+    ui->messageLabel->setText("Вы за нолики!");
+    ui->messageLabel->setStyleSheet(Style::getNormalMessageStyle());
 }
 
  // Скрываем заголовок, выставляем высоту и текущую вкладку tabWidge
@@ -160,6 +165,7 @@ void Widget::lockPlayer()
 // Клик по кнопке Играть-Сдаюсь
 void Widget::on_startButton_clicked()
 {
+    ui->tabWidget->setCurrentIndex(0);
     if(gameStart) {
         playerLocked = true;
         ui->startButton->setText("Играть");
@@ -218,6 +224,7 @@ void Widget::computerInGame()
 
 void Widget::chekGameStop()
 {
+    QString style;
     winner = '-';
     char symbols[2] {'X','0'};
     for(int i=0;i<2;i++){
@@ -225,6 +232,22 @@ void Widget::chekGameStop()
             if((gameArea[row][0]==symbols[i])and(gameArea[row][1]==symbols[i])and(gameArea[row][2]==symbols[i])){
                 stop = true;
                 winner = symbols[i];
+                if(winner==player){
+                    if(player == 'X'){
+                        style=Style::getCrossVictoryStyle();
+                    }else{
+                        style=Style::getZeroVictoryStyle();
+                    }
+               }else{
+                    if(player == 'X'){
+                        style=Style::getZeroLostStyle();
+                    }else{
+                        style=Style::getCrossLostStyle();
+                    }
+                }
+                changeButtonStyle(row,0,style);
+                changeButtonStyle(row,1,style);
+                changeButtonStyle(row,2,style);
                 return;
             }
         }
@@ -232,17 +255,65 @@ void Widget::chekGameStop()
             if((gameArea[0][col]==symbols[i])and(gameArea[1][col]==symbols[i])and(gameArea[2][col]==symbols[i])){
                 stop = true;
                 winner = symbols[i];
+                if(winner==player){
+                    if(player == 'X'){
+                        style=Style::getCrossVictoryStyle();
+                    }else{
+                        style=Style::getZeroVictoryStyle();
+                    }
+               }else{
+                    if(player == 'X'){
+                        style=Style::getZeroLostStyle();
+                    }else{
+                        style=Style::getCrossLostStyle();
+                    }
+                }
+                changeButtonStyle(0,col,style);
+                changeButtonStyle(1,col,style);
+                changeButtonStyle(2,col,style);
                 return;
             }
         }
         if((gameArea[0][0]==symbols[i])and(gameArea[1][1]==symbols[i])and(gameArea[2][2]==symbols[i])){
             stop = true;
             winner = symbols[i];
+            if(winner==player){
+                if(player == 'X'){
+                    style=Style::getCrossVictoryStyle();
+                }else{
+                    style=Style::getZeroVictoryStyle();
+                }
+           }else{
+                if(player == 'X'){
+                    style=Style::getZeroLostStyle();
+                }else{
+                    style=Style::getCrossLostStyle();
+                }
+            }
+            changeButtonStyle(0,0,style);
+            changeButtonStyle(1,1,style);
+            changeButtonStyle(2,2,style);
             return;
         }
         if((gameArea[0][2]==symbols[i])and(gameArea[1][1]==symbols[i])and(gameArea[2][0]==symbols[i])){
             stop = true;
             winner = symbols[i];
+            if(winner==player){
+                if(player == 'X'){
+                    style=Style::getCrossVictoryStyle();
+                }else{
+                    style=Style::getZeroVictoryStyle();
+                }
+           }else{
+                if(player == 'X'){
+                    style=Style::getZeroLostStyle();
+                }else{
+                    style=Style::getCrossLostStyle();
+                }
+            }
+            changeButtonStyle(0,2,style);
+            changeButtonStyle(1,1,style);
+            changeButtonStyle(2,0,style);
             return;
         }
     }
@@ -303,3 +374,9 @@ void Widget::onComputerSlot()
        }
    }
 
+
+void Widget::on_aboutButton_clicked()
+{
+    ui->tabWidget->setCurrentIndex(1);
+
+}

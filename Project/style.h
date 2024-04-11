@@ -28,6 +28,8 @@ public:
     static QString getVictoryMessageStyle();
     static QString getLostMessageStyle();
     static QString getDrawMessageStyle();
+
+    static QString getAboutTextStyle();
 };
 
 

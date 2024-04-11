@@ -25,6 +25,8 @@ private slots:
     void onGameAreaButtonClicked();
     void onComputerSlot();
 
+    void on_aboutButton_clicked();
+
 private:
     Ui::Widget *ui;
     void setInterfaceStyle();
