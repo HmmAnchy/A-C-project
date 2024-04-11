@@ -29,15 +29,21 @@
    <iconset resource="res.qrc">
     <normaloff>:/res/images/icon.png</normaloff>:/res/images/icon.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <spacer name="horizontalSpacer_5">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
@@ -45,6 +51,9 @@
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_5">
+     <property name="spacing">
+      <number>20</number>
+     </property>
      <item>
       <spacer name="verticalSpacer_3">
        <property name="orientation">
@@ -60,11 +69,38 @@
      </item>
      <item>
       <widget class="QLabel" name="label_2">
+       <property name="styleSheet">
+        <string notr="true">QLabel#label_2{
+background:none;
+}</string>
+       </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="res.qrc">:/res/images/text.png</pixmap>
+        <pixmap resource="res.qrc">:/res/images/name.png</pixmap>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="messageLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Победа!</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -77,85 +113,72 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QPushButton" name="pushButton_23">
+        <widget class="QPushButton" name="leftButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>26</height>
+          </size>
+         </property>
          <property name="text">
-          <string>X</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_24">
+        <widget class="QPushButton" name="rightButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>26</height>
+          </size>
+         </property>
          <property name="text">
-          <string>O</string>
+          <string/>
          </property>
         </widget>
        </item>
       </layout>
      </item>
      <item>
-      <spacer name="verticalSpacer_9">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
+      <widget class="QPushButton" name="startButton">
+       <property name="minimumSize">
         <size>
-         <width>20</width>
-         <height>20</height>
+         <width>0</width>
+         <height>60</height>
         </size>
        </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Победа</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_10">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
+       <property name="sizeIncrement">
         <size>
-         <width>20</width>
-         <height>40</height>
+         <width>0</width>
+         <height>0</height>
         </size>
        </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_25">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>Играть</string>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="verticalSpacer_11">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
+      <widget class="QPushButton" name="aboutButton">
+       <property name="minimumSize">
         <size>
-         <width>20</width>
+         <width>0</width>
          <height>40</height>
         </size>
        </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_26">
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>Правила игры</string>
        </property>
@@ -182,11 +205,11 @@
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
+      <enum>QSizePolicy::Fixed</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
@@ -213,20 +236,12 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton {
-	color: #f00;
-	background-color: rgb(151, 155, 235);
-	border: 1px solid #555;
-}
-QPushButton::hover {
-
-	border-color: rgb(255, 0, 0);
-}</string>
+      <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
-     <widget class="QWidget" name="tab_5">
+     <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>Игра</string>
       </attribute>
@@ -247,7 +262,7 @@ QPushButton::hover {
         <number>5</number>
        </property>
        <item row="1" column="2">
-        <widget class="QPushButton" name="pushButton_17">
+        <widget class="QPushButton" name="pushButton_1_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -261,12 +276,12 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QPushButton" name="pushButton_18">
+        <widget class="QPushButton" name="pushButton_0_1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -280,12 +295,12 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton_20">
+        <widget class="QPushButton" name="pushButton_1_0">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -299,12 +314,12 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QPushButton" name="pushButton_15">
+        <widget class="QPushButton" name="pushButton_2_0">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -318,12 +333,12 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton_16">
+        <widget class="QPushButton" name="pushButton_0_0">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -337,12 +352,12 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QPushButton" name="pushButton_19">
+        <widget class="QPushButton" name="pushButton_0_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -356,12 +371,12 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton_14">
+        <widget class="QPushButton" name="pushButton_2_1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -375,12 +390,12 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QPushButton" name="pushButton_21">
+        <widget class="QPushButton" name="pushButton_1_1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -397,12 +412,12 @@ QPushButton::hover {
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="2" column="2">
-        <widget class="QPushButton" name="pushButton_22">
+        <widget class="QPushButton" name="pushButton_2_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -416,24 +431,24 @@ QPushButton::hover {
           </size>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_6">
+     <widget class="QWidget" name="tab_2">
       <attribute name="title">
        <string>Правила игры</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="aboutTextLabel">
          <property name="text">
-          <string>TextLabel</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Игрок выбирает &amp;quot;X&amp;quot; или &amp;quot;0&amp;quot;. &lt;/p&gt;&lt;p&gt;Если игрок выбирает &amp;quot;X&amp;quot;, то он ходит первым, а &lt;/p&gt;&lt;p&gt;если &amp;quot;0&amp;quot; - компьютер.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Выигрывает тот, кто первым пострить линию из&lt;/p&gt;&lt;p&gt;трех своих символов по горизонтали, вертикали&lt;/p&gt;&lt;p&gt;или диагонали. Если все клетки заполнены, а ни&lt;/p&gt;&lt;p&gt;одного игрока не посторена линия из трех сим-&lt;/p&gt;&lt;p&gt;волов, игра объявляется ничьей.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
         </widget>
        </item>
@@ -451,7 +466,7 @@ QPushButton::hover {
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
+       <width>35</width>
        <height>20</height>
       </size>
      </property>
